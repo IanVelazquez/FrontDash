@@ -1,0 +1,256 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FrontDash • Login</title>
+
+  <!-- bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link href="assets/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- nav bar -->
+  <nav class="navbar navbar-expand-lg border-bottom sticky-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">FrontDash</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-lg-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home / Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="review.html">Review</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="payment.html">Payment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="delivery.html">Delivery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="confirm.html">Confirmation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="login.html">Login</a>
+          </li>
+        </ul>
+
+        <div class="ms-lg-auto d-flex align-items-center gap-3">
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="openSwitch" />
+            <label class="form-check-label" for="openSwitch">Open</label>
+          </div>
+
+          <a class="btn btn-outline-primary position-relative" href="cart.html">
+            Cart
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              id="cartCount"
+            >
+              0
+            </span>
+          </a>
+
+          <a class="btn btn-outline-secondary" href="login.html">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+ 
+  <main class="container py-5" style="max-width: 720px;">
+    <!-- banner when  signed in -->
+    <div id="loginStatus"></div>
+
+    <h1 class="h3 mb-4">Login</h1>
+
+    <!-- staff/admin login -->
+    <ul class="nav nav-pills mb-3" id="roleTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="staff-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#staffPane"
+          type="button"
+          role="tab"
+          aria-controls="staffPane"
+          aria-selected="true"
+        >
+          Staff Login
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="admin-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#adminPane"
+          type="button"
+          role="tab"
+          aria-controls="adminPane"
+          aria-selected="false"
+        >
+          Admin Login
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <!-- straff login -->
+      <div
+        class="tab-pane fade show active"
+        id="staffPane"
+        role="tabpanel"
+        aria-labelledby="staff-tab"
+        tabindex="0"
+      >
+        <form id="staffLoginForm" class="card" novalidate>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="staffUsername" class="form-label">Username</label>
+              <input
+                type="text"
+                id="staffUsername"
+                class="form-control"
+                placeholder="e.g. cox01"
+                required
+                pattern="[A-Za-z]{2,}\d{2}"
+              />
+              <div class="form-text">
+                Format: lastname + two digits (min two letters + two digits).
+              </div>
+              <div class="invalid-feedback">
+                Enter a valid username (two+ letters followed by two digits).
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="staffPassword" class="form-label">Password</label>
+              <input
+                type="password"
+                id="staffPassword"
+                class="form-control"
+                required
+              />
+              <div class="form-text">
+                Min 6 characters with upper, lower, and number.
+              </div>
+              <div class="invalid-feedback">
+                Password must meet policy.
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="submit" class="btn btn-primary">Log In</button>
+            </div>
+
+            <div
+              id="staffLoginError"
+              class="text-danger mt-2 d-none"
+            >
+              Invalid credentials or inactive staff account.
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- admin login -->
+      <div
+        class="tab-pane fade"
+        id="adminPane"
+        role="tabpanel"
+        aria-labelledby="admin-tab"
+        tabindex="0"
+      >
+        <form id="adminLoginForm" class="card" novalidate>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="adminUsername" class="form-label">Admin Username</label>
+              <input
+                type="text"
+                id="adminUsername"
+                class="form-control"
+                placeholder="e.g. admin99"
+                required
+              />
+              <div class="invalid-feedback">Username is required.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="adminPassword" class="form-label">Password</label>
+              <input
+                type="password"
+                id="adminPassword"
+                class="form-control"
+                required
+              />
+              <div class="form-text">
+                Min 6 characters with upper, lower, and number.
+              </div>
+              <div class="invalid-feedback">
+                Password must meet policy.
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="submit" class="btn btn-primary">Log In</button>
+            </div>
+
+            <div
+              id="adminLoginError"
+              class="text-danger mt-2 d-none"
+            >
+              Invalid admin credentials.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container py-4 small">
+    <div class="d-flex justify-content-between">
+      <span>&copy; 2025 FrontDash</span>
+      <span>Staff / Admin Login</span>
+    </div>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script src="assets/js/state.js"></script>
+  <script src="assets/js/validators.js"></script>
+  <script src="assets/js/helpers.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/pages/login.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setActiveNav('login.html');
+    });
+  </script>
+</body>
+</html>

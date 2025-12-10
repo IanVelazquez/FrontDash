@@ -1,0 +1,144 @@
+/* ==========================================================================
+   File Name: styles.css
+   FrontDash - Light Theme (Dark Mode removed)
+   This stylesheet forces a light UI and hides the dark mode toggle globally.
+   ========================================================================== */
+
+/* Base */
+html, body {
+  height: 100%;
+  background-color: #f8f9fa; /* Bootstrap light gray */
+  color: #212529;            /* Bootstrap body color */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Links */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Navbar (override any 'navbar-dark' usage to render as light) */
+.navbar,
+.navbar.navbar-dark {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #dee2e6;
+}
+.navbar .navbar-brand,
+.navbar.navbar-dark .navbar-brand,
+.navbar .nav-link,
+.navbar.navbar-dark .nav-link {
+  color: #212529 !important;
+}
+.navbar .nav-link.active {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Offcanvas (ensure light) */
+.offcanvas,
+.offcanvas .offcanvas-header,
+.offcanvas .offcanvas-body {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+}
+
+/* Cards (ensure light) */
+.card {
+  background-color: #ffffff;
+  color: #212529;
+  border: 1px solid #e9ecef;
+  border-radius: .5rem;
+}
+
+/* Tables:
+   Some pages used .table-dark—override it to look like a light table.
+*/
+.table-dark {
+  --bs-table-bg: #ffffff;
+  --bs-table-color: #212529;
+  --bs-table-striped-bg: #f2f2f2;
+  --bs-table-striped-color: #212529;
+  --bs-table-hover-bg: #ececec;
+  --bs-table-hover-color: #212529;
+  background-color: #ffffff;
+  color: #212529;
+}
+
+/* Toast (keep readable on light UI) */
+.toast.text-bg-dark {
+  background-color: #343a40 !important;
+  color: #ffffff !important;
+}
+.toast .toast-header.bg-dark {
+  background-color: #343a40 !important;
+  color: #ffffff !important;
+}
+
+/* Forms */
+.form-control, .form-select {
+  background-color: #ffffff;
+  color: #212529;
+  border: 1px solid #ced4da;
+}
+.form-control:focus, .form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
+}
+
+/* Validation feedback always reserved space for neat layouts */
+.invalid-feedback {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  margin-top: .25rem;
+  font-size: .875rem;
+}
+.is-invalid ~ .invalid-feedback {
+  visibility: visible;
+  height: auto;
+}
+
+/* Utility: compact quantity input width in cart */
+.input-qty, .qty-input {
+  width: 80px;
+}
+
+/* Tabs (hardening: ensure only active pane shows) */
+.tab-content > .tab-pane { display: none; }
+.tab-content > .active { display: block; }
+
+/* Hide Dark Mode toggle everywhere without editing HTML */
+#themeSwitch,
+label[for="themeSwitch"] {
+  display: none !important;
+}
+/* (Optional) remove stray spacing if a wrapper exists */
+.form-check:has(#themeSwitch) {
+  display: none !important;
+}
+
+/* Footer */
+footer.container {
+  border-top: 1px solid #e9ecef;
+  color: #6c757d;
+}
+
+/* Buttons on white navbar: make .btn-outline-light visible on light bg */
+.btn-outline-light {
+  color: #6c757d;
+  border-color: #ced4da;
+}
+.btn-outline-light:hover {
+  background-color: #f8f9fa;
+  color: #495057;
+  border-color: #adb5bd;
+}
+
+/* Misc */
+.badge.text-bg-secondary {
+  background-color: #6c757d !important;
+  color: #fff !important;
+}
+.alert {
+  border-radius: .5rem;
+}
